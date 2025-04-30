@@ -56,7 +56,7 @@ jobs:
           name: Build backend
           command: |
             cd backend
-            ./mvnw clean install
+            ./mvnw clean install -DskipTests
       # TODO: need to set up backend test with ENV VAR
       # - run:
       #     name: Run backend tests
