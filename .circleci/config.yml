@@ -20,7 +20,7 @@ jobs:
   frontend:
     executor: node_executor
     environment:
-      REACT_APP_BACKEND_BASE_URL: https://sctp-se9-g2-cicd.onrender.com
+      REACT_APP_BACKEND_BASE_URL: https://sctp-se9-g2-cicd.onrender.com/api
     steps:
       - checkout
       - run:
