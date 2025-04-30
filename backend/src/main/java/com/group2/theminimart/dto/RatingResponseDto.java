@@ -10,7 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RatingResponseDto {
-  // TODO Create RatingDto which removes the password
   private Long id;
 
   private Double rate;
