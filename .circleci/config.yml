@@ -1,0 +1,108 @@
+version: 2.1
+
+executors:
+  node_executor:
+    docker:
+      - image: cimg/node:18.20.2
+    working_directory: ~/project
+
+  java_executor:
+    docker:
+      - image: cimg/openjdk:17.0
+    working_directory: ~/project
+
+  docker_executor:
+    docker:
+      - image: cimg/base:stable
+    working_directory: ~/project
+
+jobs:
+  frontend:
+    executor: node_executor
+    steps:
+      - checkout
+      - run:
+          name: Install frontend dependencies
+          command: |
+            cd frontend
+            npm install
+      - run:
+          name: Run frontend tests
+          command: |
+            cd frontend
+            npm test -- --watchAll=false
+      - run:
+          name: Build frontend
+          command: |
+            cd frontend
+            npm run build
+      - persist_to_workspace:
+          root: frontend/build
+          paths:
+            - .
+
+  backend:
+    executor: java_executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: frontend_build
+      - run:
+          name: Move frontend build to backend static directory
+          command: |
+            mkdir -p backend/src/main/resources/static
+            cp -r frontend_build/* backend/src/main/resources/static/
+      - run:
+          name: Build backend
+          command: |
+            cd backend
+            ./mvnw clean install
+      - run:
+          name: Run backend tests
+          command: |
+            cd backend
+            ./mvnw test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  docker_build_push:
+    executor: docker_executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - setup_remote_docker
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t $DOCKERHUB_USERNAME/theminimart:latest ./backend
+      - run:
+          name: Push to Docker Hub
+          command: |
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push $DOCKERHUB_USERNAME/theminimart:latest
+
+  deploy_to_render:
+    executor: docker_executor
+    steps:
+      - run:
+          name: Trigger Deploy on Render
+          command: |
+            curl -X POST "$RENDER_DEPLOY_HOOK_URL"
+
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - frontend
+      - backend:
+          requires:
+            - frontend
+      - docker_build_push:
+          requires:
+            - backend
+      - deploy_to_render:
+          requires:
+            - docker_build_push
