@@ -1,0 +1,52 @@
+.registerContainer {
+  height: calc(100vh - 4rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  display: grid;
+  text-align: center;
+}
+label {
+  color: #4d4d4d;
+}
+.formInput {
+  width: 10rem;
+  height: 2rem;
+}
+.inputError {
+  width: 10rem;
+  height: 2rem;
+}
+.inputContainer {
+  display: grid;
+  justify-items: center;
+  margin: 1rem 0;
+}
+.errorMessage {
+  padding: 0.5rem 1rem;
+  background-color: #fff5f5;
+  border: 1px solid #ff8787;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #c92a2a;
+  margin-top: 0.5rem;
+}
+.button {
+  width: 10rem;
+  height: 2rem;
+  margin: 1rem auto;
+  font-size: 1rem;
+  color: var(--color-offwhite);
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-primary);
+  border-radius: 0.3rem;
+}
+.button:hover {
+  background-color: var(--color-primary);
+}
+.link {
+  font-size: 0.7rem;
+}

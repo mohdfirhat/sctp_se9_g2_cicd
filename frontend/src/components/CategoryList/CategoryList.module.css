@@ -1,0 +1,22 @@
+.titleName {
+  margin: 0;
+  line-height: 1.25;
+  box-sizing: border-box;
+  color: darkblue;
+  padding-left: 0.5rem;
+}
+
+.categoryName {
+  font-size: 1rem;
+  text-align: center;
+  background-color: var(--color-white);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin: 0.5rem;
+}
+
+@media (max-width: 501px) {
+  .categoryName {
+    font-size: 0.8rem;
+  }
+}

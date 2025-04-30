@@ -1,0 +1,46 @@
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+}
+.productCard {
+  flex: 0 0 250px;
+  background-color: var(--color-white);
+  margin: 0.2rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgb(0, 0, 0, 0.1);
+}
+.image {
+  width: 190px;
+  height: 250px;
+  padding: 10px;
+  object-fit: contain;
+}
+.ratingPriceContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.rating {
+  display: flex;
+  flex-direction: row;
+}
+.title {
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.2em;
+  height: 3.6em;
+  overflow: auto;
+  padding: 0 0.3rem;
+}
+.price {
+  text-align: end;
+  padding: 1rem;
+  margin: 0;
+}
+.link {
+  text-decoration: none;
+  color: black;
+}

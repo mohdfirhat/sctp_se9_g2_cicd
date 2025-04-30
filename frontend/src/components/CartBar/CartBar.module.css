@@ -1,0 +1,18 @@
+.totalSection {
+    top: 4rem;
+    position: sticky;
+    display: flex;
+    justify-items: right;
+    flex-direction: row-reverse;
+    align-items: center;
+    z-index: 10;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .checkoutButton {
+    height: 2rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+    border: solid rgba(0, 0, 0, 0.132) 1px;
+  }
+  

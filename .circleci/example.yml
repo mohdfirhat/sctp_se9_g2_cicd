@@ -1,0 +1,57 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.1.0
+  java: circleci/openjdk@1.0.0
+
+executors:
+  java-node-executor:
+    docker:
+      - image: cimg/openjdk:17.0
+    working_directory: ~/repo
+
+jobs:
+  build-frontend:
+    executor: node/default
+    working_directory: ~/repo/frontend
+    steps:
+      - checkout:
+          path: ~/repo
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          name: Run React tests
+          command: npm test -- --watchAll=false
+      - run:
+          name: Build React app
+          command: npm run build
+      - run:
+          name: Move build to backend static folder
+          command: |
+            mkdir -p ../backend/src/main/resources/static
+            rm -rf ../backend/src/main/resources/static/*
+            cp -r build/* ../backend/src/main/resources/static/
+
+  build-backend:
+    executor:
+      name: java/openjdk
+      tag: '17'
+    working_directory: ~/repo/backend
+    steps:
+      - checkout:
+          path: ~/repo
+      - run:
+          name: Build Spring Boot app
+          command: ./mvnw clean install
+      - run:
+          name: Run backend tests
+          command: ./mvnw test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build-frontend
+      - build-backend:
+          requires:
+            - build-frontend

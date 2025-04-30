@@ -1,0 +1,57 @@
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem;
+}
+.searchInput {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  width: 300px;
+  border-radius: 1.5rem;
+  border: 1px solid #394673;
+}
+.inputRecommendContainer {
+  position: relative;
+}
+.searchButton {
+  font-size: 1.2rem;
+  margin-left: 0.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  background-color: #394673;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.titleName {
+  margin: 0 0.8rem;
+  line-height: 1.25;
+  box-sizing: border-box;
+  color: darkblue;
+}
+.errorContainer {
+  margin: 1rem 2rem;
+}
+.errorMessage {
+  padding: 0.5rem 1rem;
+  background-color: #fff5f5;
+  border: 1px solid #ff8787;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #c92a2a;
+}
+@media only screen and (max-width: 500px) {
+  .searchContainer {
+    padding: 1rem;
+  }
+  .searchInput {
+    width: 230px;
+  }
+  .errorContainer {
+    text-align: center;
+  }
+}

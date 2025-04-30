@@ -1,0 +1,15 @@
+.button {
+  min-width: 3rem;
+  margin: 0.8rem 0.6rem;
+  padding: 0.3rem;
+  background-color: rgb(174, 184, 207);
+  border-radius: 100px;
+  border: 1.5px solid black;
+  color: black;
+  transition-duration: 0.2s;
+}
+.button:hover {
+  background-color: white;
+  color: black;
+  border-width: 1.5px;
+}

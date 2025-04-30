@@ -1,0 +1,9 @@
+{
+    "properties": [
+        {
+            "name": "env.data.secretkey",
+            "type": "java.lang.String",
+            "description": "SECRET KEY used to encrypt JWT TOKEN"
+        }
+    ]
+}

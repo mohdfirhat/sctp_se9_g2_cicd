@@ -1,0 +1,74 @@
+header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4rem;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgb(0, 0, 0, 0.1);
+  /* background-color: #394674f9; */
+  background-color: var(--color-primary);
+  opacity: 1;
+}
+.bagImg {
+  height: 1.5rem;
+}
+.logoText {
+  /* padding: 1rem 1rem; */
+  padding-left: 0.3rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 800;
+  color: var(--color-offblack);
+}
+.link {
+  text-decoration: none;
+  padding: 0.5rem;
+  color: var(--color-offblack);
+  font-weight: 500;
+}
+.linkActive {
+  text-decoration: none;
+  padding: 0.5rem;
+  color: var(--color-offwhite);
+  background-color: var(--color-secondary);
+  border-radius: 0.5rem;
+}
+ul {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+li {
+  margin: 0 1rem;
+  list-style-type: none;
+}
+.badge {
+  position: relative;
+  top: -0.5rem; /* Adjust vertical position */
+  left: -0.5rem; /* Adjust horizontal position */
+  padding: 0.3rem 0.6rem; /* Reduced padding using rem */
+  border-radius: 50%; /* Circular shape */
+  background: rgba(255, 0, 0, 0.616);
+  color: white;
+  font-size: 0.75rem; /* Reduced font size for badge text */
+  line-height: 1; /* Ensure the content is vertically centered */
+  min-width: 1.6rem; /* Set minimum width for a circular shape */
+  height: 1.6rem; /* Set height for a circular shape */
+  justify-content: center;
+  align-items: center; /* Center the content */
+}
+.cartBadge {
+  background-color: rgb(76, 71, 174);
+  color: white;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 750;
+  position: absolute;
+  top: 5px;
+  right: 0.5rem;
+}
